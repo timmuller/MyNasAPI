@@ -1,0 +1,31 @@
+body {
+    background-color: #AADFFF
+}
+
+.container {
+    margin-top:         20px;
+    background-color:   #DDEFFF;
+    min-height:         90%;
+
+    -moz-border-radius: 10px;
+    border-radius:      10px;
+    box-shadow: 2px 2px 1px #888888;
+}
+
+.info-box {
+    background-color:   #FFFFFF;
+    -moz-border-radius: 2px;
+    border-radius:      2px;
+    padding:            5px;
+    margin-top:         10px;
+}
+
+.info-box h3 {
+    padding:            0px;
+    margin:             0px;
+    margin-bottom:      4px;
+    font-size:          15px;
+    font-weight:        bold;
+    text-align:         center;
+    border-bottom:      1px solid #eeeeee;
+}

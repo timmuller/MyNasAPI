@@ -1,1 +1,76 @@
-jaja
+{% load staticfiles %}
+<html>
+<head>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static "style.css" %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+    <script src="{% static "index.js" %}"></script>
+    <title></title>
+</head>
+<body>
+
+<section class="container">
+    <div class="row">
+        <span class="col-md-4">
+            <div class="row info-box">
+                <h3>System Info</h3>
+                <div class="col-xs-12">
+                    <div class="col-xs-4">
+                        Uptime
+                    </div>
+                    <div class="col-xs-8" id="text_uptime">
+                        27 dagen
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="col-xs-4">
+                        CPU usage
+                    </div>
+                    <div class="col-xs-8">
+                        <span id="text_cpu_usage">90%</span> / 100%
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="col-xs-4">
+                        Memory
+                    </div>
+                    <div class="col-xs-6">
+                        <span id="text_memory_usage">100</span> MB / <span id="text_memory_total">512</span> MB
+                    </div>
+                    <div class="col-xs-1">
+                        10%
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="col-xs-4">
+                        Swap usage
+                    </div>
+                    <div class="col-xs-6">
+                        50 MB / 100 MB
+                    </div>
+                    <div class="col-xs-1">
+                        100%
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="col-xs-4">
+                        Disk usage
+                    </div>
+                    <div class="col-xs-6">
+                        3.1 T / 5.1 T
+                    </div>
+                    <div class="col-xs-1">
+                        100%
+                    </div>
+                </div>
+            </div>
+        </span>
+        <span class="col-md-8">jaja</span>
+    </div>
+</section>
+
+
+</body>
+</html>
