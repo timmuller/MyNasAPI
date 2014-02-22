@@ -1,11 +1,13 @@
 from django.conf.urls import patterns, include, url
 from movie.scraper import Scraper
+from views.views import IndexView
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
 # admin.autodiscover()
 
 urlpatterns = patterns('',
+    url('^$', IndexView.as_view(), name='index_view'),
     url('api/v1/movie/scraper', Scraper.as_view(), name='v1_movie_scraper'),
     # Examples:
     # url(r'^$', 'nas_api.views.home', name='home'),
