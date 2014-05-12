@@ -26,7 +26,7 @@ class TestListAllMovies(BaseTestCase):
     def test_that_list_all_movies_returns_all_valid_movies(self):
         self.mock_listdir.return_value = ['location1', 'location2']
         movie_locations = movie_manager.list_movies('somelocation')
-        self.assertEqual(movie_locations, ['location1', 'location2'])
+        self.assertEqual(movie_locations, ['somelocation/location1', 'somelocation/location2'])
 
     def test_that_list_all_movies_returns_empty_list_when_no_movies_found(self):
         self.mock_listdir.return_value = []
@@ -39,7 +39,7 @@ class TestListAllMovies(BaseTestCase):
 
         self.mock_listdir.return_value = ['location1', 'notmovie', 'location2']
         movie_locations = movie_manager.list_movies('somelocation')
-        self.assertEqual(movie_locations, ['location1', 'location2'])
+        self.assertEqual(movie_locations, ['somelocation/location1', 'somelocation/location2'])
 
 
 class TestValidateMovie(TestCase):
