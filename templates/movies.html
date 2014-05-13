@@ -1,14 +1,17 @@
 {% extends base.html %}
-
 {% block content %}
+
+<div class="row movies">
+    <div class="row table-header">
+        <div class="col-xs-12">Foldername</div>
+    </div>
   {% for movie in movies %}
         <div class="row">
-            <div class="col-xs-4">
+            <div class="col-xs-12">
                 {{ movie }}
-            </div>
-            <div class="col-xs-4">
-                {{ movie.absolute_location }}
             </div>
         </div>
   {% end %}
+</div>
+
 {% end %}

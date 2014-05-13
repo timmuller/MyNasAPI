@@ -1,0 +1,12 @@
+body {
+    margin:     10px;
+}
+
+.movies {
+    border:     1px solid gray;
+    border-radius: 15px;
+}
+
+.table-header {
+    font-weight:    bold;
+}
