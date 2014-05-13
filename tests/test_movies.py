@@ -1,6 +1,7 @@
 from unittest import TestCase
 import mock
 from control import movie_manager
+from control.movie_manager import Movie
 
 
 class BaseTestCase(TestCase):
@@ -26,7 +27,8 @@ class TestListAllMovies(BaseTestCase):
     def test_that_list_all_movies_returns_all_valid_movies(self):
         self.mock_listdir.return_value = ['location1', 'location2']
         movie_locations = movie_manager.list_movies('somelocation')
-        self.assertEqual(movie_locations, ['somelocation/location1', 'somelocation/location2'])
+        self.assertEqual(movie_locations[0].absolute_location, 'somelocation/location1')
+        self.assertEqual(movie_locations[1].absolute_location, 'somelocation/location2')
 
     def test_that_list_all_movies_returns_empty_list_when_no_movies_found(self):
         self.mock_listdir.return_value = []
@@ -39,7 +41,8 @@ class TestListAllMovies(BaseTestCase):
 
         self.mock_listdir.return_value = ['location1', 'notmovie', 'location2']
         movie_locations = movie_manager.list_movies('somelocation')
-        self.assertEqual(movie_locations, ['somelocation/location1', 'somelocation/location2'])
+        self.assertEqual(movie_locations[0].absolute_location, 'somelocation/location1')
+        self.assertEqual(movie_locations[1].absolute_location, 'somelocation/location2')
 
 
 class TestValidateMovie(BaseTestCase):
@@ -60,3 +63,11 @@ class TestValidateMovie(BaseTestCase):
         self.mock_listdir.side_effect = OSError
 
         self.assertFalse(movie_manager.is_movie_type('somelocation'))
+
+
+class TestMovieObject(BaseTestCase):
+    def test_that_movie_object_print_returns_folder_name_of_movie(self):
+        movie = Movie('/my/absolute/path/to/MyMovie (2013)')
+
+        self.assertEqual(str(movie), 'MyMovie (2013)')
+
