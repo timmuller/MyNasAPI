@@ -1,3 +1,4 @@
+import os
 import logging
 import tornado.web
 import tornado.ioloop
@@ -5,7 +6,7 @@ from views.movie_view import MovieListView
 from views.test_view import TestView
 import importlib
 
-importlib.import_module('config.local')
+importlib.import_module(os.environ.get('TORNADO_SETTINGS', 'config.local'))
 
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(message)s')
 
