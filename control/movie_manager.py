@@ -31,3 +31,6 @@ class Movie(object):
 
     def __repr__(self):
         return self.foldername()
+    
+    def __str__(self):
+        return self.foldername()
