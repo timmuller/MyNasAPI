@@ -1,16 +1,12 @@
 import logging
 import tornado.web
 import tornado.ioloop
+from views.movie_view import MovieListView
 
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(message)s')
 
-class MainHandler(tornado.web.RequestHandler):
-    def get(self):
-        self.write("Hello, world")
-
-
 application = tornado.web.Application([
-    (r"/", MainHandler),
+    (r"/movies/", MovieListView),
 ])
 
 if __name__ == '__main__':
