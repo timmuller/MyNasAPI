@@ -2,6 +2,13 @@
 
 {% block content %}
   {% for movie in movies %}
-        <div>{{ movie }}</div>
+        <div class="row">
+            <div class="col-xs-4">
+                {{ movie }}
+            </div>
+            <div class="col-xs-4">
+                {{ movie.absolute_location }}
+            </div>
+        </div>
   {% end %}
 {% end %}

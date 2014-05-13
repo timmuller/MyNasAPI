@@ -13,6 +13,7 @@ logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(message)s')
 
 settings = dict(
         template_path=os.path.join(os.path.dirname(__file__), "templates"),
+        static_path=os.path.join(os.path.dirname(__file__), 'static'),
 )
 
 application = tornado.web.Application([
@@ -25,6 +26,7 @@ if __name__ == '__main__':
     application.listen(8888)
     logging.info("Application started on port 8888")
     tornado.autoreload.watch('templates/')
+    tornado.autoreload.watch('static/')
 
     ioloop = tornado.ioloop.IOLoop.instance()
     tornado.autoreload.start(ioloop)
