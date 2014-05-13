@@ -3,6 +3,7 @@ import logging
 import tornado.web
 import tornado.ioloop
 import tornado.autoreload
+from tornado.options import options
 from views.movie_view import MovieListView
 from views.test_view import TestView
 import importlib
@@ -25,11 +26,15 @@ if __name__ == '__main__':
     logging.info('Start of application on port 8888')
     application.listen(8888)
     logging.info("Application started on port 8888")
-    tornado.autoreload.watch('templates/')
-    tornado.autoreload.watch('static/')
 
     ioloop = tornado.ioloop.IOLoop.instance()
-    tornado.autoreload.start(ioloop)
+
+    if options.DEVELOPMENT:
+        logging.info("Watching project changes for reload application")
+        tornado.autoreload.watch('templates/')
+        tornado.autoreload.watch('static/')
+        tornado.autoreload.start(ioloop)
+
     ioloop.start()
 
     logging.info("Application stopped")
