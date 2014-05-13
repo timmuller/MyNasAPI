@@ -42,13 +42,21 @@ class TestListAllMovies(BaseTestCase):
         self.assertEqual(movie_locations, ['somelocation/location1', 'somelocation/location2'])
 
 
-class TestValidateMovie(TestCase):
+class TestValidateMovie(BaseTestCase):
+    def setUp(self):
+        super(TestValidateMovie, self).setUp()
+        self.mock_listdir = self.setup_patch('os.listdir')
+        self.mock_listdir.return_value = []
+
     def test_that_is_movie_type_returns_true_when_is_a_valid_movie_director(self):
-        with mock.patch('os.listdir') as mock_listdir:
-            mock_listdir.return_value = ['myawesomemovie']
-            self.assertTrue(movie_manager.is_movie_type('somelocation'))
+        self.mock_listdir.return_value = ['myawesomemovie']
+        self.assertTrue(movie_manager.is_movie_type('somelocation'))
 
     def test_that_is_movie_type_returns_false_when_directory_is_empty(self):
-        with mock.patch('os.listdir') as mock_listdir:
-            mock_listdir.return_value = []
-            self.assertFalse(movie_manager.is_movie_type('somelocation'))
+        self.mock_listdir.return_value = []
+        self.assertFalse(movie_manager.is_movie_type('somelocation'))
+
+    def test_that_is_movie_type_returns_false_when_location_is_a_file(self):
+        self.mock_listdir.side_effect = OSError
+
+        self.assertFalse(movie_manager.is_movie_type('somelocation'))

@@ -11,7 +11,11 @@ def list_movies(location):
 
 
 def is_movie_type(location):
-    potential_files = os.listdir(location)
+    try:
+        potential_files = os.listdir(location)
+    except OSError:
+        potential_files = []
+
     if not potential_files:
         return False
     return True
