@@ -16,5 +16,6 @@ application = tornado.web.Application([
 if __name__ == '__main__':
     logging.info('Start of application on port 8888')
     application.listen(8888)
-    tornado.ioloop.IOLoop.instance().start()
     logging.info("Application started on port 8888")
+    tornado.ioloop.IOLoop.instance().start()
+    logging.info("Application stopped")
