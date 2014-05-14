@@ -1,0 +1,10 @@
+{% extends base.html %}
+{% block content %}
+
+<div class="row movies">
+  {% for result in disk_results.keys() %}
+      disk {{ result }} is active: {{ disk_results[result] }} <br/>
+  {% end %}
+</div>
+
+{% end %}
